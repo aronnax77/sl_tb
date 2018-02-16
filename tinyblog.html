@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="css/tinyblog.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TinyTalk</title>
+</head>
+<body>
+
+  <div class="main-container">
+
+    <header>
+      <div class="menu-and-title">
+        <span id="icon-app" @click="open" class="menu-icon">&#9776;</span>
+        <span class="title-icon">TinyTalk</span>
+      </div>
+    </header>
+
+    <nav id="nav-app" :style="{width: menuWidth}">
+      <!-- vertical menu with title bar -->
+      <a href="javascript:void(0)" class="closebtn" @click="close">&times;</a>
+      <div class="vertical-menu-with-title">
+        <div class="menu-title">Categories</div>
+        <div class="menu-items">
+          <div v-for="(category, index) in categories"
+               :class="{active:index === isActive}"
+               @click="selected(category, index)">
+               {{ category }}
+          </div>
+        </div>
+      </div>
+
+    </nav>
+
+
+    <div id="content-app" class="posts" >
+
+      <div v-if="isArticle" v-html="articleText" class="article"></div>
+
+      <div v-else>
+      <post-summary v-for="(post, index) in posts"
+                    :title="post.title"
+                    :date="post.date"
+                    :content="post.content"
+                    @activate="getArticle(index)"
+                   >
+      </post-summary>
+      </div>
+
+    </div>
+
+    <template id="summary-panel">
+      <div class="panel4" @click="activatepost">
+        <h1 class="title">{{ title }}</h1>
+        <p class="date">{{ date }}</p>
+        <p class="desc">{{ content }}</p>
+      </div>
+    </template>
+
+  <script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
+  <!--<script src="js/db.js"></script>-->
+  <script src="js/tinyblog.js"></script>
+
+</body>
+</html>

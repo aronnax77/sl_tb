@@ -1,0 +1,356 @@
+/******************************************************************************
+TABLE OF CONTENTS
+
+AUTHOR            - Richard Myatt
+DATE              - 6 December 2017
+
+
+GENERAL STYLING                - main container and general styling
+FORM STYLING                   - form and button styling
+ARTICLE STYLING                - article styling
+RESPONSIVE STYLING             - responsive layout styling
+
+
+COLOUR PALETTE
+
+lightgrey                      - background colour ariticle on hover
+#cedff2                        - ariticle panel background light blue
+#ffffff                        - main container background white
+#a7d7f9                        - main container border blue
+#f6f6f6                        - body background grey
+#3366cc                        - button font blue
+
+
+******************************************************************************/
+
+/******************************************************************************
+  General styling begins
+******************************************************************************/
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #eee;
+  background-image: url("../assets/textured.jpg");
+}
+/* General styling ends */
+
+
+/******************************************************************************
+  Layout styling begins
+******************************************************************************/
+.main-container {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 100px 1fr;
+  grid-template-areas:
+    "h h h h h h h h h h h h"
+    "n n n c c c c c c . . .";
+}
+
+header {
+  grid-area: h;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  justify-content: center;
+  font-family: Lobster, cursive;
+  letter-spacing: 3px;
+  color: #fff;
+  background-color: #03264a;
+  box-shadow: 0 10px 5px rgba(150, 150, 150, 0.8);
+}
+
+.menu-and-title {   /*header > div {*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  height: 100px;
+  color: #eee;
+}
+
+.menu-icon {
+  font-size: 48px;
+  padding-left: 50px;
+  visibility: hidden;
+}
+
+.title-icon {
+  font-size: 40px;
+  font-weight: bold;
+  padding-right: 50px;
+}
+
+.menu-bar {
+  width: 35px;
+  height: 5px;
+  background-color: #fff;
+  margin: 6px 0;
+}
+
+nav {
+  grid-area: n;
+  /*padding: 50px 20px 50px 20px;*/
+}
+
+.posts {
+  grid-area: c;
+  padding: 50px 50px 0 50px;
+  background-color: #fff;
+  box-shadow: 4px 0 2px #ddd,  -4px 0 2px #ddd;
+}
+/* General styling ends */
+
+
+/******************************************************************************
+  Post summary styling begins
+******************************************************************************/
+.panel4 {
+  text-align: justify;
+  font-size: 1.2em;
+  padding: 16px;
+  margin: 16px 16px 30px 16px;
+  border: 1px solid #ccc;
+  box-shadow: 4px 4px 2px rgba(200, 200, 200, 0.8);
+}
+
+.panel4:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+
+.title {
+  padding: 20px 30px 10px 30px;
+}
+
+.date {
+  color: #aaa;
+  padding: 5px 30px 5px 30px;
+}
+
+.desc {
+  padding: 30px;
+}
+/* Post summary styling ends */
+
+
+/******************************************************************************
+  Article styling begins
+******************************************************************************/
+.article {
+  text-align: justify;
+}
+
+.article h1 {
+  padding: 20px 30px 10px 30px;
+}
+
+.article h2 {
+  padding: 50px 30px 10px 30px;
+}
+
+.article p {
+  font-size: 1.2em;
+  padding: 10px 30px 10px 30px;
+}
+
+.article p:first-of-type {
+  font-size: 0.8em;
+  color: #aaa;
+  padding: 5px 30px 5px 30px;
+}
+/* Article styling ends */
+
+/******************************************************************************
+  Menu styling begins
+******************************************************************************/
+.closebtn {
+  visibility: hidden;
+}
+
+.menu-icon:hover {
+  cursor: pointer;
+}
+
+.vertical-menu-with-title {
+  box-shadow: 5px 5px 2px rgba(200, 200, 200, 0.8);
+  position: fixed;
+  top: 200px;
+  left: 5%;
+  width: 15%;
+  font-size: 1.2em;
+}
+
+.menu-title {
+  color: #fff;
+  background-color: #03264a;
+  padding: 8px;
+}
+
+.menu-items > div {
+  padding: 8px 20px 8px 20px;
+  background-color: #ddd;
+}
+
+.menu-items > div:hover {
+  cursor: pointer;
+  color: yellow;
+  background-color: #ccc;
+}
+
+.menu-items > div.active {
+  color: yellow;
+  background-color: teal;
+}
+/* Menu styling ends */
+
+
+/******************************************************************************
+  Responsive styling begins
+******************************************************************************/
+@media only screen and (max-width:1500px) {
+  /* For medium size screens: */
+  .main-container {
+    grid-template-areas:
+      "h h h h h h h h h h h h"
+      "n n n n c c c c c c c c";
+  }
+
+  header {
+    justify-content: right;
+  }
+
+  .vertical-menu-with-title {
+    width: 20%;
+    font-size: 1.0em;
+  }
+
+  .menu-and-title {
+    width: 67%;
+  }
+
+  .menu-icon {
+    font-size: 30px;
+  }
+
+  .title-icon {
+    font-size: 30px;
+  }
+
+  .article p {
+    font-size: 1.0em;
+    padding: 10px 30px 10px 30px;
+  }
+
+  .panel4 {
+    font-size: 1.0em;
+  }
+}
+
+@media only screen and (max-width:900px) {
+  /* For tablets and mobile phones: */
+  .main-container {
+    grid-template-areas:
+      "h h h h h h h h h h h h"
+      "c c c c c c c c c c c c";
+  }
+
+  .closebtn {
+    visibility: visible;
+  }
+
+  .menu-and-title {
+    width: 100%;
+  }
+
+  .posts {
+    padding: 10px 10px 0 10px;
+  }
+
+  .menu-icon {
+    visibility: visible;
+  }
+
+/******************************************************************************/
+  nav {
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+
+  nav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  nav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  nav a:hover {    /* this needs work */
+    color: #f1f1f1;
+  }
+
+  .vertical-menu-with-title {
+    box-shadow: none;
+    position: static;
+    top: auto;
+    left: auto;
+    margin: 100px auto;
+    width: 50%;
+    font-size: 1.2em;
+  }
+
+  .menu-title {
+    background-color: #111;
+  }
+
+  .menu-items > div {
+    display: block;
+    color: #818181;
+    background-color: #111;
+  }
+
+  .menu-items > div.active {
+    color: teal;
+    background-color: #111;
+  }
+}
+
+@media only screen and (max-width:450px) {
+  nav.small {
+    width: 90%;
+  }
+
+  .vertical-menu-with-title {
+    font-size: 0.8em;
+  }
+}
+/* Responsive styling ends */
