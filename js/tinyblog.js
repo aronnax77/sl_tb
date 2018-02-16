@@ -87,6 +87,7 @@ function getPost(url) {
   .then(response => response.text())
   .then(function(data) {
     contentApp.articleText = data;
+    window.scrollTo(0, 0);
   })
   .catch(error => console.log("There was an error: ", error));
 }
@@ -96,8 +97,9 @@ function getPost(url) {
 function getSelectedPosts(cat) {
   if(cat === "Latest") {
     getPost(db[0].articleUrl);    // sets the articleUrl for Latest
-    //return;
+    window.scrollTo(0, 0);
   } else if(cat === "All") {
+    window.scrollTo(0, 0);
     return db;
   } else {
     var res = [];
@@ -106,6 +108,7 @@ function getSelectedPosts(cat) {
       	res.push(db[i]);
     	}
     }
+    window.scrollTo(0, 0);
     return res;
   }
 }
