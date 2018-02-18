@@ -1,3 +1,8 @@
+/* Author: Richard Myatt
+   Date: 18 February 2018
+   Version: 1.0.0
+*/
+
 // db will hold the database details for the blog
 var db = [];
 
@@ -51,7 +56,7 @@ var menuApp = new Vue({
 var contentApp = new Vue({
   el: "#content-app",
   data: {
-    isArticle: true,         // this should be set to true normally
+    isArticle: true,
     articleText: "",
     posts: ""
   },
@@ -73,7 +78,7 @@ var contentApp = new Vue({
 // helper function serving init() sets menuApp.categories
 function setMenu() {
   var menuCategories = ["Latest", "All"];
-  var categoriesArr = getCategoriesArr(); //["Cat", "Miscelaneous", "Pharo", "Raspberry Pi", "TinyBlog", "Unclassified"];
+  var categoriesArr = getCategoriesArr();
   var sorted = categoriesArr.sort();
   for(var i = 0; i < sorted.length; i++) {
     menuCategories.push(sorted[i]);

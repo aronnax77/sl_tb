@@ -1,27 +1,47 @@
+/* Author: Richard Myatt
+   Date: 18 February 2018
+   Version: 1.0.0
+*/
+
 /******************************************************************************
 TABLE OF CONTENTS
 
 AUTHOR            - Richard Myatt
 DATE              - 6 December 2017
+VERSION           - 1.0.0
 
 
-GENERAL STYLING                - main container and general styling
-FORM STYLING                   - form and button styling
+GENERAL STYLING                - overall styling
+LAYOUT STYLING                 - styling related to general layout
+POST SUMMARY STYLING           - stying for post categories
 ARTICLE STYLING                - article styling
+MENU STYLING                   - styling for main menu
 RESPONSIVE STYLING             - responsive layout styling
 
 
 COLOUR PALETTE
 
-lightgrey                      - background colour ariticle on hover
-#cedff2                        - ariticle panel background light blue
-#ffffff                        - main container background white
-#a7d7f9                        - main container border blue
-#f6f6f6                        - body background grey
-#3366cc                        - button font blue
+#eee                           - off white text for heading and menu hamberger
+                                 plus body colour
+#fff                           - white menu bar text and post background
+#ddd                           - light grey menu item background colour
+#ccc                           - light grey post border and panel hover
+#aaa                           - grey date text
+#f00                           - red testing text
+#111                           - dark grey sliding side menu background
+#818181                        - grey sliding menu active
+#f1f1f1                        - grey side menu text on hover
+#111                           - grey side menu background
+rgba(150, 150, 150, 0.8)       - grey drop down shadow
+rgba(200, 200, 200, 0.8)       - grey drop down shadow
+#03264a                        - dark blue title bar and top menu bar
+yellow                         - menu item hover
+teal                           - menu item active
+
 
 
 ******************************************************************************/
+
 
 /******************************************************************************
   General styling begins
@@ -68,12 +88,11 @@ header {
   justify-content: center;
   font-family: Lobster, cursive;
   letter-spacing: 3px;
-  color: #fff;
   background-color: #03264a;
   box-shadow: 0 10px 5px rgba(150, 150, 150, 0.8);
 }
 
-.menu-and-title {   /*header > div {*/
+.menu-and-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -103,7 +122,6 @@ header {
 
 nav {
   grid-area: n;
-  /*padding: 50px 20px 50px 20px;*/
 }
 
 .posts {
@@ -125,6 +143,10 @@ nav {
   margin: 16px 16px 30px 16px;
   border: 1px solid #ccc;
   box-shadow: 4px 4px 2px rgba(200, 200, 200, 0.8);
+}
+
+.panel4 > h1 {
+  text-align: left;
 }
 
 .panel4:hover {
@@ -327,7 +349,7 @@ nav {
     margin-left: 50px;
   }
 
-  nav a:hover {    /* this needs work */
+  nav a:hover {
     color: #f1f1f1;
   }
 
