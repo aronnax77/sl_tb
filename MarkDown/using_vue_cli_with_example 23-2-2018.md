@@ -1,4 +1,4 @@
-#Vue Cli Tutorial with Example
+#Using Vue Cli with Example
 
 Friday, 23. February 2018
 
@@ -22,11 +22,11 @@ vue create vuepro
 
 This will bring up a screen asking you to select a preset.  In this case there is only one marked default as shown below:
 
-![Please pick a preset:](../assets/images/select_presets.png  "Select a Preset")
+![Please pick a preset:](https://rawgit.com/aronnax77/sl_tb/master/assets/images/select_presets.png  "Select a Preset")
 
 This will be followed by the installation of the various packages and concludes with a screen like that below:
 
-![Concluding instructions](../assets/images/concluding_instructions.png  "Concluding instructions")
+![Concluding instructions](https://rawgit.com/aronnax77/sl_tb/master/assets/images/concluding_instructions.png  "Concluding instructions")
 
 This concludes with the instructions:
 
@@ -37,11 +37,11 @@ yarn serve
 
 After changing directory to **vuepro** running *yarn serve* will produce the welcome page at http://localhost:8080/.
 
-![Welcome page](../assets/images/welcome_page.png  "Welcome page")
+![Welcome page](https://rawgit.com/aronnax77/sl_tb/master/assets/images/welcome_page.png  "Welcome page")
 
 An inspection of the file structure will reveal the following arrangement:
 
-![File structure](../assets/images/file_structure.png  "File structure")
+![File structure](https://rawgit.com/aronnax77/sl_tb/master/assets/images/file_structure.png  "File structure")
 
 These project files provide an example of the way in which vue.js can be used to generate a modular, component based application.
 
@@ -164,7 +164,7 @@ h1 {
 
 This results in the following page being rendered to the browser:
 
-![First simple example](../assets/images/first_simple_example.png  "First simple example")
+![First simple example](https://rawgit.com/aronnax77/sl_tb/master/assets/images/first_simple_example.png  "First simple example")
 
 There are a number of things to note:
 - the template expects to have just one root element.  In this case a div with the id="welcome".

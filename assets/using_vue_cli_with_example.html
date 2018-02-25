@@ -1,0 +1,236 @@
+<html>
+ <body>
+  <h1 id="using-vue-cli-with-example">
+   Using Vue Cli with Example
+  </h1>
+  <p>
+   Friday, 23. February 2018
+  </p>
+  <p>
+   Using the Vue-cli allows the developer to work in an environment which is compatible with EC6 and ES2105 which immediately provides access to import statements in the JavaScript.  This combined with vue.js gives the developer access to a flexible modular, component based design framework.  In turn webpack provides a way to turn this framework into a set of files which can be understood by the browser.
+  </p>
+  <p>
+   At the time of writing there are very few writen or video tutorials online which are currently up to date with the latest developments in the vue-cli.  This article attempts to address the very basic aspects involved in downloading and using the current version the documentation to which can be found
+   <a href="https://github.com/vuejs/vue-cli">
+    here.
+   </a>
+   The present README.md provides instructions to download and create a project in the Quickstart section.  These instructions are reproduced below:
+  </p>
+  <pre><code>npm install -g @vue/cli
+# or
+yarn global add @vue/cli
+
+vue create my-project
+</code></pre>
+  <p>
+   For the purpose of this article we will create a project called
+   <strong>
+    vuepro
+   </strong>
+   with the following instructions:
+  </p>
+  <pre><code>vue create vuepro
+</code></pre>
+  <p>
+   This will bring up a screen asking you to select a preset.  In this case there is only one marked default as shown below:
+  </p>
+  <p>
+   <img alt="Please pick a preset:" src="https://rawgit.com/aronnax77/sl_tb/master/assets/images/select_presets.png" title="Select a Preset"/>
+  </p>
+  <p>
+   This will be followed by the installation of the various packages and concludes with a screen like that below:
+  </p>
+  <p>
+   <img alt="Concluding instructions" src="https://rawgit.com/aronnax77/sl_tb/master/assets/images/concluding_instructions.png" title="Concluding instructions"/>
+  </p>
+  <p>
+   This concludes with the instructions:
+  </p>
+  <pre><code>cd vuepro
+yarn serve
+</code></pre>
+  <p>
+   After changing directory to
+   <strong>
+    vuepro
+   </strong>
+   running
+   <em>
+    yarn serve
+   </em>
+   will produce the welcome page at
+   <a href="http://localhost:8080/">
+    http://localhost:8080/
+   </a>
+   .
+  </p>
+  <p>
+   <img alt="Welcome page" src="https://rawgit.com/aronnax77/sl_tb/master/assets/images/welcome_page.png" title="Welcome page"/>
+  </p>
+  <p>
+   An inspection of the file structure will reveal the following arrangement:
+  </p>
+  <p>
+   <img alt="File structure" src="https://rawgit.com/aronnax77/sl_tb/master/assets/images/file_structure.png" title="File structure"/>
+  </p>
+  <p>
+   These project files provide an example of the way in which vue.js can be used to generate a modular, component based application.
+  </p>
+  <p>
+   The folder whch is of immediate interest to us here is the
+   <em>
+    src
+   </em>
+   folder and the
+   <em>
+    index.html
+   </em>
+   file in the
+   <em>
+    public
+   </em>
+   folder.  Looking firstly at the
+   <em>
+    index.html
+   </em>
+   file we will see the following:
+  </p>
+  <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width,initial-scale=1.0"&gt;
+    &lt;link rel="shortcut icon" href="&lt;%= webpackConfig.output.publicPath %&gt;favicon.ico"&gt;
+    &lt;title&gt;vuepro&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="app"&gt;&lt;/div&gt;
+    &lt;!-- built files will be auto injected --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  <p>
+   As you will see the built files will be auto injected into the div with the id=”app”.  This is the top file which displays the welcome page shown above.  Injecting the visual contents of the page into the div element is the function of main.js which is shown below:
+  </p>
+  <pre><code>import Vue from 'vue'
+import App from './App.vue'
+
+Vue.config.productionTip = false
+
+new Vue({
+  render: h =&gt; h(App)
+}).$mount('#app')
+</code></pre>
+  <p>
+   Here you will see that vue.js itself forms the first import.  This is followed by the import of App from “./App.vue” which is root .vue component file.  The new Vue element which is instanciated below this renders the root element to the index.html file.
+  </p>
+  <p>
+   The environment which is provided through the vue-cli is one which is built on a root element which is itself composed of sub-elements.  In the example provided by creating the default project this is provided by the only sub-element in the file structure “HelloWorld.vue”.  Looking firstly at App.vue we find the following:
+  </p>
+  <pre><code>&lt;template&gt;
+  &lt;div id="app"&gt;
+    &lt;img src="./assets/logo.png"&gt;
+    &lt;HelloWorld msg="Welcome to Your Vue.js App"/&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import HelloWorld from './components/HelloWorld.vue'
+
+export default {
+  name: 'app',
+  components: {
+    HelloWorld
+  }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+&lt;/style&gt;
+</code></pre>
+  <p>
+   At first sight this may look complicated but once you begin to see the ideas inherent in the file structure the whole concept of using a modular, component based system become much clearer.  This file is typical of a component .vue file and consists broadly of three elements:
+  </p>
+  <ol>
+   <li>
+    the template which describes the html part of the element.
+   </li>
+   <li>
+    the script which defines the vue component and exports the element.
+   </li>
+   <li>
+    and finally the style element which in this case is css.
+   </li>
+  </ol>
+  <p>
+   Being the root element in this case we also find an import for the HelloWorld component and can see this component being used within the template above the import.
+  </p>
+  <h2 id="a-first-simple-example">
+   A First Simple Example
+  </h2>
+  <p>
+   To provide a first very simple example of how this all works we will modify the root component.  A future article may provide details of how components can be nested and expand on the basic concept of a root elements and nested sub-elements.
+  </p>
+  <p>
+   Delete the contents of the existing App.vue file and insert the following code:
+  </p>
+  <pre><code>&lt;template&gt;
+  &lt;div id="welcome"&gt;
+    &lt;h1&gt;Welcome to the world of the vue-cli&lt;/h1&gt;
+    &lt;p&gt;{{ msg }}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+export default {
+  data() {
+    return {
+      msg: "There are more things in heaven and earth, Horatio, Than are dreamt of in your philosophy."
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+
+body {
+  background-color: #c0ec9c;
+}
+
+#welcome {
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+  color: #222265;
+}
+&lt;/style&gt;
+</code></pre>
+  <p>
+   This results in the following page being rendered to the browser:
+  </p>
+  <p>
+   <img alt="First simple example" src="https://rawgit.com/aronnax77/sl_tb/master/assets/images/first_simple_example.png" title="First simple example"/>
+  </p>
+  <p>
+   There are a number of things to note:
+   <br/>
+   - the template expects to have just one root element.  In this case a div with the id=”welcome”.
+   <br/>
+   - This is a vue component and as such the data element is provided as a function.
+   <br/>
+   - some styling is provided as an example to make things more interesting.
+  </p>
+ </body>
+</html>
