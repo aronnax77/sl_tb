@@ -32,5 +32,3 @@ Future modifications might include:
 - a way of presenting a limited number of posts at a time - ***I am being optimistic!***
 
 Hoping that this may be of interest to others and wishing all aspiring software enthusiasts good fortune.
-
-Richard Myatt
