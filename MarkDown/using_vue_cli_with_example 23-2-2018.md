@@ -167,6 +167,7 @@ This results in the following page being rendered to the browser:
 ![First simple example](https://rawgit.com/aronnax77/sl_tb/master/assets/images/first_simple_example.png  "First simple example")
 
 There are a number of things to note:
+
 - the template expects to have just one root element.  In this case a div with the id="welcome".
 - This is a vue component and as such the data element is provided as a function.
 - some styling is provided as an example to make things more interesting.

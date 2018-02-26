@@ -1,6 +1,7 @@
 /* Author: Richard Myatt
    Date: 18 February 2018
-   Version: 1.0.0
+   Version: 1.0.1
+   Revised: 23 February 2018
 */
 
 /******************************************************************************
@@ -22,7 +23,7 @@ RESPONSIVE STYLING             - responsive layout styling
 COLOUR PALETTE
 
 #eee                           - off white text for heading and menu hamberger
-                                 plus body colour
+                                 plus body colour, also code background
 #fff                           - white menu bar text and post background
 #ddd                           - light grey menu item background colour
 #ccc                           - light grey post border and panel hover
@@ -155,6 +156,14 @@ nav {
   -webkit-box-shadow: 4px 0 2px #ddd,  -4px 0 2px #ddd;
           box-shadow: 4px 0 2px #ddd,  -4px 0 2px #ddd;
 }
+
+/*.posts > .article {
+  -ms-grid-row: 2;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 6;
+  grid-area: c;
+  padding: 50px 30px 30px 30px;
+}*/
 /* General styling ends */
 
 
@@ -219,6 +228,23 @@ nav {
   font-size: 0.8em;
   color: #aaa;
   padding: 5px 30px 5px 30px;
+}
+
+li, ul {
+  margin: 30px 30px 30px 20px;
+}
+
+img {
+  max-width: 40vw;
+  margin: 40px 0;
+}
+
+pre {
+  max-width: 40vw;
+  padding: 20px 30px;
+  background-color: #eee;
+  margin: 40px 60px 40px 30px;
+  overflow: auto;
 }
 
 .testing {
@@ -322,6 +348,14 @@ nav {
   .panel4 {
     font-size: 1.0em;
   }
+
+  img {
+    max-width: 50vw;
+  }
+
+  pre {
+    max-width: 50vw;
+  }
 }
 
 @media only screen and (max-width:900px) {
@@ -346,6 +380,14 @@ nav {
 
   .menu-icon {
     visibility: visible;
+  }
+
+  img {
+    max-width: 70vw;
+  }
+
+  pre {
+    max-width: 70vw;
   }
 
 /******************************************************************************/
