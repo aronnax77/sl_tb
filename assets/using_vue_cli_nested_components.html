@@ -1,0 +1,250 @@
+<html>
+ <body>
+  <h1 id="using-vue-cli-nested-components-with-example">
+   Using Vue Cli - nested components with example
+  </h1>
+  <p>
+   Friday, 02. March 2018
+  </p>
+  <p>
+   This article continues and extends the last article
+   <strong>
+    ‘Using  Vue Cli with Example’
+   </strong>
+   dated Friday, 23 February 2018.  As that previous article explained the environment which is created when we run
+  </p>
+  <pre><code>vue create my-project
+</code></pre>
+  <p>
+   uses a root component which is given the file name
+   <strong>
+    App.vue
+   </strong>
+   through the project creation process.  In the last article we modified that root component as an example of the way in which the environment could be used.  That modification was made with the following code:
+  </p>
+  <pre><code>&lt;template&gt;
+  &lt;div id="welcome"&gt;
+    &lt;h1&gt;Welcome to the world of the vue-cli&lt;/h1&gt;
+    &lt;p&gt;{{ msg }}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+export default {
+  data() {
+    return {
+      msg: "There are more things in heaven and earth, Horatio, Than are dreamt of in your philosophy."
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+
+body {
+  background-color: #c0ec9c;
+}
+
+#welcome {
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+  color: #222265;
+}
+&lt;/style&gt;
+</code></pre>
+  <p>
+   which produced the following simple output:
+  </p>
+  <p>
+   <img alt="First simple example" src="https://rawgit.com/aronnax77/sl_tb/master/assets/images/first_simple_example.png" title="First simple example"/>
+  </p>
+  <h2 id="nested-components-explained">
+   Nested components explained
+  </h2>
+  <p>
+   Before we extend the previous example it is perhaps worth considering the way in which we can think of the root component in relation to nested components.  The following diagram helps to explain how the various components are interlinked.  At the top of the diagram is the root component.
+  </p>
+  <p>
+   <img alt="Nested Components" src="https://rawgit.com/aronnax77/sl_tb/master/assets/images/nested_components.png" title="Nested Components"/>
+  </p>
+  <p>
+   Any html document will take on a classic tree structure and .vue component files make use of this structure to provide modular components.  The root component at the top of the tree, given the file name App.vue in this case, can incorporate within itself nested components, which in this example, are ‘HEADER COMPONENT’, ‘ARTICLE COMPONENT’, and ‘FOOTER COMPONENT’.  These nested components can in turn include other nested components shown here in the case of the ‘HEADER COMPONENT’.
+  </p>
+  <h2 id="example-nested-component">
+   Example nested component
+  </h2>
+  <p>
+   The project creation process incorporates one nested component called ‘HelloWorld.vue’ in the components folder.  In the example which follows we will create a simple nested component of our own for illustrative purposes.
+  </p>
+  <p>
+   Create a file in the components folder names ‘Plays.vue’ and enter the following code:
+  </p>
+  <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;ul&gt;
+      &lt;li v-for="play in plays"&gt;{{ play }}&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+export default {
+  data() {
+    return {
+      plays: ["Othello", "Henry VIII", "Macbeth"]
+    }
+  }
+}
+
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+div {
+  width: 150px;
+  margin: 0 auto;
+}
+
+div &gt; ul {
+  text-align: left;
+}
+
+&lt;/style&gt;
+</code></pre>
+  <p>
+   Please note the addition of the word ‘scoped’ in the first of the style tags.  This restricts the styling to this particular element.  If this word is not present the styling becomes global in scope.
+  </p>
+  <h2 id="registering-the-component">
+   Registering the component
+  </h2>
+  <p>
+   There are two ways in which the new component can be registed:
+  </p>
+  <ol>
+   <li>
+    Globally.  This allows the component to be used anywhere in the application.
+   </li>
+   <li>
+    Locally.  This restricts the use of the component to its enclosing component.
+   </li>
+  </ol>
+  <p>
+   We will look at both methods.
+  </p>
+  <h3 id="registering-the-component-globally">
+   Registering the component globally
+  </h3>
+  <p>
+   In order to register the component globally we make use of the file ‘main.js’.  Open main.js and import and register the component as shown below:
+  </p>
+  <pre><code>import Vue from 'vue'
+import App from './App.vue'
+import Plays from './components/Plays.vue'
+
+Vue.component('plays', Plays);
+
+Vue.config.productionTip = false;
+
+new Vue({
+  render: h =&gt; h(App)
+}).$mount('#app')
+</code></pre>
+  <p>
+   This component can now be added to the root component by altering the code as shown below:
+  </p>
+  <pre><code>&lt;template&gt;
+  &lt;div id="welcome"&gt;
+    &lt;h1&gt;Welcome to the world of the vue-cli&lt;/h1&gt;
+    &lt;p&gt;{{ msg }}&lt;/p&gt;
+    &lt;plays&gt;&lt;/plays&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+export default {
+  data() {
+    return {
+      msg: "There are more things in heaven and earth, Horatio, Than are dreamt of in your philosophy."
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+
+body {
+  background-color: #c0ec9c;
+}
+
+#welcome {
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+  color: #222265;
+}
+&lt;/style&gt;
+</code></pre>
+  <p>
+   Which provides the following output in the browser:
+  </p>
+  <p>
+   <img alt="Output with nested component" src="https://rawgit.com/aronnax77/sl_tb/master/assets/images/inc_nested_component.png" title="Output with nested component"/>
+  </p>
+  <h2 id="registering-the-component-locally">
+   Registering the component locally
+  </h2>
+  <p>
+   Firstly undo all changes made in registering the nested component globally.  That is remove the import and registration code from main.js.  Then register the component locally in App.vue as follows:
+  </p>
+  <pre><code>&lt;template&gt;
+  &lt;div id="welcome"&gt;
+    &lt;h1&gt;Welcome to the world of the vue-cli&lt;/h1&gt;
+    &lt;p&gt;{{ msg }}&lt;/p&gt;
+    &lt;plays&gt;&lt;/plays&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import Plays from './components/Plays.vue'
+
+export default {
+  components: {
+    plays: Plays
+  },
+  data() {
+    return {
+      msg: "There are more things in heaven and earth, Horatio, Than are dreamt of in your philosophy."
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+
+body {
+  background-color: #c0ec9c;
+}
+
+#welcome {
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+  color: #222265;
+}
+&lt;/style&gt;
+</code></pre>
+  <p>
+   This should then result in the same output within the browser as that when the component was registered globally.
+  </p>
+ </body>
+</html>
