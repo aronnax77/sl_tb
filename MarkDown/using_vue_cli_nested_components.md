@@ -171,7 +171,7 @@ Which provides the following output in the browser:
 
 ![Output with nested component](https://rawgit.com/aronnax77/sl_tb/master/assets/images/inc_nested_component.png  "Output with nested component")
 
-##Registering the component locally
+###Registering the component locally
 
 Firstly undo all changes made in registering the nested component globally.  That is remove the import and registration code from main.js.  Then register the component locally in App.vue as follows:
 
